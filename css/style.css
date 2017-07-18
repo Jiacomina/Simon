@@ -1,0 +1,90 @@
+body{
+	font-size: 0px;
+	height: 100vh;
+	width: 100vw;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	outline: 0px;
+	line-height: 0px;
+}
+.t-box{
+	border-width: 40px;
+	border-style: solid;
+	height: 0px;
+	width: 0px;
+	opacity: 0;
+	border-color: transparent;
+	position: absolute;
+	background: transparent;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.t-box-left{
+	border-left-color: #AEBDDC;
+}
+.t-box-top{
+	border-top-color: #F3D5E2;
+}
+.t-box-right{
+	border-right-color: #C792AB; /*purple */
+}
+.t-box-bottom{
+	border-bottom-color: #BFD2F1;
+}
+.full-box{
+	height: 100%;
+	width: 80px;
+	float: left;
+	opacity: 0;
+	background: transparent;
+}
+.holder-row{
+	height: 80px;
+}
+.holder-box{
+	position: relative;
+	height: 400px;
+	width: 400px;
+	text-align: left;
+	display: block;
+	left: 50%;
+	background-color: white;
+	top: 50%;
+	transform: translate(-50%, -70%);
+}
+.box-1{
+	background-color: #CAE9B9; /*green*/
+}
+
+.box-2{
+	background-color: #F3D5E2; /*pink*/
+}
+
+.box-3{
+	background-color: #F4B8A7; /*dark orange*/
+}
+
+.box-4{
+	background-color: #C792AB; /*purple */
+}
+
+.box-5{
+	background-color: #F8E0B5; /*yellow*/
+}
+
+.box-6{
+	background-color: #BFD2F1; /*light blue*/
+}
+
+.box-7{
+	background-color: #F1CCB9; /*light orange */
+}
+
+.box-8{
+	background-color: #AEBDDC; /*dark blue */
+}
+.box-highlight{
+	opacity: 0;
+}
