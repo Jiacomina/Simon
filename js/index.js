@@ -1,21 +1,23 @@
 $(document).ready(function(){
 
-	$('.full-box , .t-box').animate({"opacity": "1"}, 4000);
+ 	var order1 = [8, 1, 2, 3, 4, 5, 6 ,7];
+ 	var i = 0;
+ 	var firstInterval = setInterval(function(){
 
- 	var order = [1, 5, 3, 7, 8, 4, 2, 6]
-	for(var i = 0; i <= order.length; i++){
-		var boxNum = order[i];
+  		var boxNum = order1[i];
 		var boxName = ".box-" + boxNum;
 		var tBoxName = '';
-		switch(order[i]){
+		
+		switch(order1[i]){
 			case 2: tBoxName = " , .t-box-top";    break;
 			case 4: tBoxName = " , .t-box-right";  break;
 			case 6: tBoxName = " , .t-box-bottom"; break;
 			case 8: tBoxName = " , .t-box-left";   break;
 		}
-		$(".box-" + boxNum + tBoxName).delay(200).animate({"opacity": "0.6"}, 100);
-	}
-	setTimeout(function(){ setBoxMouseover();}, 2000);
+		$(boxName + tBoxName).animate({"opacity": "1"}, 400);
+  		i++;
+  		if (i == order1.length) clearInterval(firstInterval);
+		}, 200);
 });
 
 function setBoxMouseover(){
