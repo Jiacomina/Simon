@@ -1,41 +1,80 @@
 $(document).ready(function(){
-
- 	var order1 = [8, 1, 2, 3, 4, 5, 6 ,7];
+ 	var order = [8, 1, 2, 3, 4, 5, 6 ,7];
  	var i = 0;
- 	var firstInterval = setInterval(function(){
 
-  		var boxNum = order1[i];
+ 	var intervalID = setInterval(function(){
+
+ 		var transTime = 300;
+  		var boxNum = order[i];
 		var boxName = ".box-" + boxNum;
 		var tBoxName = '';
-		
-		switch(order1[i]){
+
+		switch(order[i]){
 			case 2: tBoxName = " , .t-box-top";    break;
 			case 4: tBoxName = " , .t-box-right";  break;
 			case 6: tBoxName = " , .t-box-bottom"; break;
 			case 8: tBoxName = " , .t-box-left";   break;
 		}
-		$(boxName + tBoxName).animate({"opacity": "1"}, 400);
+		$(boxName + tBoxName).animate({"opacity": "1"}, transTime);
   		i++;
-  		if (i == order1.length) clearInterval(firstInterval);
-		}, 200);
+  		if (i == order.length){ //end of tile display
+  			clearInterval(intervalID);
+  			showSubtitle(transTime);
+  		}
+		}, 250);
 });
+function showSubtitle(transTime){
+	$('.letter-6').animate({"opacity": "1"}, transTime);
+	var i = 7;
+	var intervalID = setInterval(function(){
+		$('.letter-' + i).animate({"opacity": "1"}, transTime);
+		i++
+		if(i == 10){
+			$('.play').animate({"opacity": "1"}, transTime);
+			$('.play').on({
+     			mouseenter: function() {
+     				$('.letter-box').animate({"opacity": "0.8"}, 100);
+     			},
+		        mouseleave: function() {
+		            $('.letter-box').animate({"opacity": "1"}, 100);
+		        },
+		    	click: function() {
+		         	startGame(transTime);
+		     	}
+			});
+			clearInterval(intervalID);
+		}
+	}, 250);
 
+}
+
+function startGame(transTime){
+
+	setTimeout(function(){
+		$('.play').animate({"opacity": "0"}, transTime*2);
+	}, 0);
+	setTimeout(function(){
+		$('.holder-box , .t-box').animate({"opacity": "0"}, transTime*2);
+	}, 0);
+	setTimeout(function(){
+		$('.square').animate({"opacity": "0.6"}, transTime*2);
+		$('.play , .holder-box , .t-box , .title-box').remove();
+	}, 1000);
+	setTimeout(function(){
+		$('.square').removeClass('hidden');
+	}, 2000);
+
+}
 function setBoxMouseover(){
-	$('.full-box').on({
-	    mouseenter: function () {
-	    	var boxNumClass = $(this).attr('class').split(' ')[1];
-	        $('.' + boxNumClass).css('opacity', 0.6);
-	        switch(boxNumClass){
-	        	case 'box-2': $('.t-box-top').css('opacity', 0.6); break;
-	        	case 'box-4': $('.t-box-right').css('opacity', 0.6); break;
-	        	case 'box-8': $('.t-box-left').css('opacity', 0.6); break;
-	        	case 'box-5': $('.t-box-bottom').css('opacity', 0.6); break;
-	        }
+	$('.square-tri').on({
+	    mouseenter: function (){
+	    	alert("hi");
+	    	var className = $(this).attr('class').split(' ')[0];
+	        $('.' + className).css('opacity', 0.6);
 	    },
-	    mouseleave: function () {
-	    	var boxNumClass = $(this).attr('class').split(' ')[1];
-	    	$('.' + boxNumClass).removeClass('box-highlight');
-	    	$('.t-box').css('opacity', 1);
+	    mouseleave: function (){
+	    	var className = $(this).attr('class').split(' ')[0];
+	        $('.' + className).css('opacity', 1);
 	    }
 	});
 }
