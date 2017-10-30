@@ -23,6 +23,7 @@ $(document).ready(function(){
   		}
 		}, 250);
 });
+
 function showSubtitle(transTime){
 	$('.letter-6').animate({"opacity": "1"}, transTime);
 	var i = 7;
@@ -57,13 +58,21 @@ function startGame(transTime){
 		$('.holder-box , .t-box').animate({"opacity": "0"}, transTime*2);
 	}, 0);
 	setTimeout(function(){
-		$('.square').animate({"opacity": "0.6"}, transTime*2);
+		$('.square').animate({"opacity": "1"}, transTime*2);
 		$('.play , .holder-box , .t-box , .title-box').remove();
 	}, 1000);
 	setTimeout(function(){
 		$('.square').removeClass('hidden');
 	}, 2000);
+	playRound1(0);
 
+}
+function playRound1(roundNum){
+	numBeeps = roundNum + 4;
+	for(var i = 0; i < numBeeps; i++){
+		var rand = Math.random();
+		alert(rand);
+	}
 }
 function setBoxMouseover(){
 	$('.square-tri').on({

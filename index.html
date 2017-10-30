@@ -69,18 +69,15 @@
      <div class = 'letter-box letter-6 hidden'>S</div>
      <div class = 'letter-box letter-5'>N</div>
    </div>
-   <div class = "square hidden">
-     <div class = "square-left square-tri"></div>
-     </div>
-     <div class = "square hidden">
-     <div class = "square-right square-tri"></div>
-     </div>
-     <div class = "square hidden">
-     <div class = "square-top square-tri"></div>
-     </div>
-     <div class = "square hidden">
-     <div class = "square-bottom square-tri"></div>
-     </div>
-   <div class = 'play hidden'>►</div>
+    <div class='square hidden'>
+      <svg viewBox='0 0 100 100'>
+        <polygon class='tri-top  triangle'   points=' 5,5  50,50 95,5'  />
+        <polygon class='tri-left  triangle'  points=' 5,5  50,50  5,95' />
+        <polygon class='tri-bottom  triangle'    points=' 5,95 50,50 95,95' />
+        <polygon class='tri-right triangle' points='95,5  50,50 95,95' />
+      </svg>
+    </div>
+   <div class = 'play hidden'></div>
+   <audio id="sound-1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" class = "hidden"></audio>
   </body>
 </html>

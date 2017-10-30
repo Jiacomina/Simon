@@ -169,6 +169,7 @@ body{
 	visibility: hidden;
 }
 .play{
+	content: '►';
 	animation: pulse 1s ease infinite;
 	background: rgba(0, 0, 0, 0.2);
 	color: white;
@@ -187,6 +188,7 @@ body{
 	top: 50%;
 }
 .play:hover{
+	content: 'Play!';
 	animation: none;
 	transform: translate(-50%, -50%);
 	background: rgba(0, 0, 0, 0.3);
@@ -206,53 +208,39 @@ body{
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-}
-.square-tri{
-	position: relative;
-	height: 240px;
-	width: 120px;
 	overflow: hidden;
+	filter: saturate(120%);
 }
-.square-tri:after{
-	content: '';
-	position: absolute;
-	width: 170px;
-	height: 170px;
+.triangle:hover {
+	opacity: 0.2;
 }
-.square-tri:hover::after{
-	opacity: 0.6;
+.tri-left{
+	fill: #A5B6E4;
 }
-.square-left{
-	transform: rotate(-180deg)translate(0px, 0px);
+.tri-left:hover{
 }
-.square-left:after {
-	background-color: #A5B6E4;
-	transform: rotate(45deg)translateX(29%);
+.tri-top{
+	fill: #B6E69C;
 }
-.square-top{
-	transform: rotate(-90deg)translate(60px, 60px);
+.tri-top:hover{
 }
-.square-top:after {
-	background-color: #B6E69C;
-	transform: rotate(45deg)translateX(29%);
+.tri-right{
+	fill: #D587A1;
 }
-.square-right{
-	transform: translate(120px, 0px);
-	cursor: pointer;
+.tri-right:hover{
+	
 }
-.square-right{
-	transform: translate(120px, 0px);
+.tri-bottom{
+	fill: #FBE3AE;
 }
-.square-right:after{
-	background-color: #D587A1;
-	transform: rotate(45deg)translateX(29%);
+.tri-bottom:hover{
 }
-.square-bottom{
-	transform: rotate(90deg)translate(60px, -60px);
+svg {
+  height: 100%;
+  width: 100%;
 }
-.square-bottom:after {
-	background-color: #FBE3AE;
-	transform: rotate(45deg)translateX(29%);
+polygon {
+	stroke-linejoin: round;
 }
 .grow{
 	animation: grow 2s ease;
