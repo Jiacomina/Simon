@@ -40,9 +40,7 @@ function showSubtitle(transTime){
 		            $('.letter-box').animate({"opacity": "1"}, 100);
 		        },
 		    	click: function() {
-		         	setTimeout(function(){
-		         		startGame(transTime);
-		         	}, 0);
+		         	startGame(transTime);
 		     	}
 			});
 			clearInterval(intervalID);
@@ -51,6 +49,7 @@ function showSubtitle(transTime){
 }
 
 function startGame(transTime){
+	console.log("game started");
 	setTimeout(function(){
 		$('.play').animate({"opacity": "0"}, transTime*2);
 	}, 0);
