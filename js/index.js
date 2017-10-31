@@ -1,6 +1,11 @@
 var tileOrder = [];
 $(document).ready(function(){
-	lowLag.init('sm2/swf');
+	var soundURL = "https://raw.githubusercontent.com/Jiacomina/Simon/master/sound/"
+	lowLag.init();
+	lowLag.load(soundURL + "simonSound1.mp3", "beep1");
+	lowLag.load(soundURL + "simonSound2.mp3", "beep2");
+	lowLag.load(soundURL + "simonSound3.mp3", "beep3");
+	lowLag.load(soundURL + "simonSound4.mp3", "beep4");
  	var subTitleOrder = [8, 1, 2, 3, 4, 5, 6 ,7];
  	var i = 0;
 
@@ -120,27 +125,23 @@ function nextTile(numBeeps){
 	}, 1000);
 }
 function lightTile(tileNum){
-	var beep1 = document.getElementById("beep-1");
-	var beep2 = document.getElementById("beep-2");
-	var beep3 = document.getElementById("beep-3");
-	var beep4 = document.getElementById("beep-4");
 
 	var fadeinTime = 300;
 	var fadeOutTime = 200;
 	switch(tileNum){
-		case 1: beep1.play();
+		case 1: lowLag.play("beep1");
 				$('.square-top').fadeOut(fadeOutTime); 
 				$('.square-top').fadeIn(fadeinTime); 
 				break;
-		case 2: beep2.play();
+		case 2: lowLag.play("beep2");
 				$('.square-right').fadeOut(fadeOutTime); 
 				$('.square-right').fadeIn(fadeinTime); 
 				break;
-		case 3: beep3.play();
+		case 3: lowLag.play("beep3");
 				$('.square-bottom').fadeOut(fadeOutTime); 
 				$('.square-bottom').fadeIn(fadeinTime); 
 				break;
-		case 4: beep4.play();
+		case 4: lowLag.play("beep4");
 				$('.square-left').fadeOut(fadeOutTime); 
 				$('.square-left').fadeIn(fadeinTime); 
 				break;
@@ -148,10 +149,6 @@ function lightTile(tileNum){
 	}
 }
 function setTileClicks(){
-	var beep1 = document.getElementById("beep-1");
-	var beep2 = document.getElementById("beep-2");
-	var beep3 = document.getElementById("beep-3");
-	var beep4 = document.getElementById("beep-4");
 
 	var tileNum = 0;
 
@@ -161,19 +158,19 @@ function setTileClicks(){
          	var className = $(this).attr('class').split(' ')[0];
          	switch(className){
          		case 'square-top': 	
-         			beep1.play();
+         			lowLag.play("beep1");
          			tileNum = 1; 
          			break;
          		case 'square-right': 	
-         			beep2.play(); 
+         			lowLag.play("beep2");
          			tileNum = 2;
          			break;
          		case 'square-bottom': 	
-         			beep3.play(); 
+         			lowLag.play("beep3");
          			tileNum = 3;
          			break;
          		case 'square-left': 	
-         			beep4.play(); 
+         			lowLag.play("beep4");
          			tileNum = 4;
          			break;
          		default: alert("Wrong tile name");

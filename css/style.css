@@ -204,9 +204,9 @@ body{
 .play-icon{
 	position: relative;
 	content: url('https://s20.postimg.org/dm74gwbrx/makefg.png');
-	height: 40px;
-	width: 40px;
-	top: 9px;
+	height: 35px;
+	width: 35px;
+	top: 5px;
 }
 @keyframes pulse {
   0% { transform: translate(-50%, -50%) scale(0.95) ; }
