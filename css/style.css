@@ -185,6 +185,8 @@ body{
 	width: 80px;
 	left: 50%;
 	top: 50%;
+	box-shadow: 0px 0px 28px -10px rgba(0,0,0,0.7);
+
 }
 .play:hover{
 	animation: none;
@@ -197,62 +199,69 @@ body{
   50% { transform: translate(-50%, -50%) scale(1); }
   100% { transform: translate(-50%, -50%) scale(0.95); }
 }
-
-/*ROUND 1*/
+/* ROUND NUMBER SCREEN */
+.round-num-screen{
+	visibility: hidden;
+	font-size: 25px;
+	position: absolute;
+	background-color: transparent;
+	text-align: center;
+	color: grey;
+	font-family: 'Open Sans';
+	font-weight: normal;
+	letter-spacing: 5px;
+	width: 290px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.big-num{
+	font-size: 80px;
+}
+/*GAME PLAY*/
 .square{
 	height: 240px;
 	width: 240px;
-	position: absolute;
-	top: 50%;
+    position:relative;
+    overflow:hidden;
+    top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
-.square-tri{
-	position: relative;
-	height: 240px;
-	width: 120px;
-	overflow: hidden;
-}
-.square-tri:after{
-	content: '';
-	position: absolute;
-	width: 170px;
-	height: 170px;
-}
-.square-tri:hover::after{
-	opacity: 0.6;
-}
-.square-left{
-	transform: rotate(-180deg)translate(0px, 0px);
-}
-.square-left:after {
-	background-color: #A5B6E4;
-	transform: rotate(45deg)translateX(29%);
+.square > div{
+    position:absolute;
+    bottom:50%; left:50%;
+    width:75%;  height:75%;
+    transform-origin:0 100%;
+    z-index:1;
 }
 .square-top{
-	transform: rotate(-90deg)translate(60px, 60px);
-}
-.square-top:after {
-	background-color: #B6E69C;
-	transform: rotate(45deg)translateX(29%);
-}
-.square-right{
-	transform: translate(120px, 0px);
-	cursor: pointer;
-}
-.square-right{
-	transform: translate(120px, 0px);
-}
-.square-right:after{
-	background-color: #D587A1;
-	transform: rotate(45deg)translateX(29%);
+    -webkit-transform:rotate(-45deg);
+    -ms-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+    background:#B6E69C;
 }
 .square-bottom{
-	transform: rotate(90deg)translate(60px, -60px);
+    -webkit-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    transform:rotate(45deg);
+    background:#FBE3AE;
 }
-.square-bottom:after {
-	background-color: #FBE3AE;
-	transform: rotate(45deg)translateX(29%);
+.square-right{
+    -webkit-transform:rotate(135deg);
+    -ms-transform:rotate(135deg);
+    transform:rotate(135deg);
+    background:#D587A1;
+}
+.square-left{
+    -webkit-transform:rotate(225deg);
+    -ms-transform:rotate(225deg);
+    transform:rotate(225deg);
+    background:#A5B6E4;
+}
+.ease-in{
+	transition: all 3s ease-in-out;
+	opacity: 1;
 }
 .grow{
 	animation: grow 2s ease;
