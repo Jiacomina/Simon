@@ -1,4 +1,5 @@
 var tileOrder = [];
+var roundNum = 0;
 $(document).ready(function(){
 	var soundURL = "https://raw.githubusercontent.com/Jiacomina/Simon/master/sound/"
 	lowLag.init();
@@ -29,6 +30,20 @@ $(document).ready(function(){
   			showSubtitle(transTime);
   		}
 		}, 200);
+ 	$('.replay-icon').on({
+ 		click: function(){
+ 			console.log("clicked!");
+ 			$('.incorrect-screen').css("visibility", "hidden");
+ 			startRound(0);
+ 		}
+ 	});
+ 	$('.next-icon').on({
+ 		click: function(){
+ 			console.log("next round!");
+ 			$('.correct-screen').css("visibility", "hidden");
+ 			startRound(roundNum);
+ 		}
+ 	});
 });
 function showSubtitle(transTime){
 	$('.letter-6').animate({"opacity": "1"}, transTime);
@@ -96,8 +111,10 @@ function setBoxMouseover(){
 	});
 }
 function startRound(roundNum){
+	tileOrder = [];
 
 	//create squares
+	$('.square').remove();
 	$('.round-num-screen').css("visibility", "hidden");
 	var square = document.createElement('div');
 	square.id = 'square';
@@ -178,14 +195,17 @@ function setTileClicks(){
          	$('.' + className).fadeOut(200); 
 			$('.' + className).fadeIn(200);
 			if(tileOrder[0] != tileNum){
- 				alert("wrong tile: " + tileOrder + " " + tileNum);
+ 				$('.incorrect-screen').css("visibility", 'visible');
+ 				roundNum = 0;
  			}
  			else{
  				tileOrder.splice(0,1);
  				if(tileOrder.length == 0){ // sequence complete
- 					alert(tileOrder + " Done!");
+ 					$('.correct-screen').css("visibility", 'visible');
+ 					roundNum++;
  				}
  			}
+ 			console.log(tileNum + " " + tileOrder);
      	}
      });
 }
