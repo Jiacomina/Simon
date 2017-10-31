@@ -1,5 +1,6 @@
 var tileOrder = [];
 var roundNum = 0;
+var highestRound = 1;
 $(document).ready(function(){
 	var soundURL = "https://raw.githubusercontent.com/Jiacomina/Simon/master/sound/"
 	lowLag.init();
@@ -113,25 +114,45 @@ function setBoxMouseover(){
 function startRound(roundNum){
 	tileOrder = [];
 
-	//create squares
-	$('.square').remove();
-	$('.round-num-screen').css("visibility", "hidden");
+	$('.square').remove(); //remove old squares from previous round
+	$('.round-num-screen').css("visibility", "hidden"); //hide round number screen
+	$('.stats-bar').css("visibility", "visible"); // show stats bar
+
+	// update round number stat
+	var roundNumStat = document.getElementById('round-num');
+	var roundNumIncr = roundNum + 1;
+	roundNumStat.innerHTML = "Round: " + roundNumIncr;
+
+	// create new square 
 	var square = document.createElement('div');
 	square.id = 'square';
 	square.className = 'square';
 	$('.square').css("opacity", "0");
 	square.innerHTML = '<div class = "square-left square-tri"></div><div class = "square-right square-tri"></div><div class = "square-top square-tri"></div><div class = "square-bottom square-tri"></div>';
 	document.getElementsByTagName('body')[0].appendChild(square);
-	var numBeeps = roundNum + 4;
-	$('.square').addClass('ease-in');
+
+	var numBeeps = roundNum + 4; //calcualte number of tiles
+
+	//update tile num stat
+	var tileNumStat = document.getElementById('num-tiles');
+	tileNumStat.innerHTML = "Tiles: " + numBeeps;
+
+	//update highest round stat
+	if(roundNum + 1 > highestRound){
+		highestRound = roundNum + 1;
+		var highestRoundStat = document.getElementById('highest-round');
+		highestRoundStat.innerHTML = "Highest Round: " + highestRound;
+	}
+
+	$('.square').addClass('ease-in'); //show square
 
 	setTimeout(function(){
-			nextTile(numBeeps);
+			nextTile(numBeeps); //generate next tile
 	}, 1000);
 }
 function nextTile(numBeeps){
 	if(numBeeps == 0){
-		startUserTurn();
+		startUserTurn(); //allow user to select tiles
 		return;
 	}
 	var tileNum = Math.ceil(Math.random()*4);
