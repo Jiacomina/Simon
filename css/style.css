@@ -204,7 +204,6 @@ body{
 }
 .play-icon{
 	position: relative;
-	content: url('https://s20.postimg.org/dm74gwbrx/makefg.png');
 	height: 35px;
 	width: 35px;
 	top: 5px;
@@ -313,7 +312,7 @@ body{
 .stat{
 	text-align: center;
 	display: inline-block;
-	width: 200px;
+	width: 150px;
 }
 .square{
 	height: 240px;
